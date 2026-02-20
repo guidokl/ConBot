@@ -15,8 +15,11 @@ if (args.Length == 0)
 string query = string.Join(" ", args);
 
 // 2. Configuration Binding
+// Resolve the absolute path of the executing binary to locate appsettings.json
+var exePath = AppContext.BaseDirectory;
+
 var configuration = new ConfigurationBuilder()
-    .SetBasePath(Directory.GetCurrentDirectory())
+    .SetBasePath(exePath)
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .Build();
 
