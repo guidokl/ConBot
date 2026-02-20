@@ -7,7 +7,7 @@ namespace ConBot.Configuration
     public class BotConfig
     {
         // Constant used to target the specific JSON node during dependency injection
-        public const string SectionName = "AiSettings";
+        public const string SectionName = "BotSettings";
 
         public string Provider { get; set; } = string.Empty;
         public string ApiKey { get; set; } = string.Empty;

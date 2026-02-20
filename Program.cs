@@ -26,6 +26,8 @@ var configuration = new ConfigurationBuilder()
 // 3. Dependency Injection Setup
 var services = new ServiceCollection();
 services.Configure<BotConfig>(configuration.GetSection(BotConfig.SectionName));
+services.Configure<PromptConfig>(configuration.GetSection(PromptConfig.SectionName));
+
 services.AddTransient<IAiProvider, OpenAiProvider>();
 services.AddTransient<AppEngine>();
 
