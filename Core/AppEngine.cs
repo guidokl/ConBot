@@ -107,7 +107,7 @@ public class AppEngine(IAiProvider aiProvider, IOptions<ThemeConfig> themeOption
             if (inCodeBlock)
             {
                 // Apply ">" to empty lines within code blocks
-                sb.AppendLine($"> [{_theme.BlockCode}]{escaped}[/]");
+                sb.AppendLine($"[dim]>[/] [{_theme.BlockCode}]{escaped}[/]");
             }
             else if (escaped.StartsWith("### ") || escaped.StartsWith("## ") || escaped.StartsWith("# "))
             {
