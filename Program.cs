@@ -4,6 +4,8 @@ using ConBot.Providers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+
 // 1. Argument Parsing
 if (args.Length == 0)
 {
