@@ -17,7 +17,7 @@ The terminal-native AI landscape is saturated with complex, stateful "Agentic Wo
 Clone the repository and compile using the .NET CLI. For maximum performance and instant execution, publish as a native AOT binary.
 
 ```bash
-git clone [https://github.com/yourusername/ConBot.git](https://github.com/yourusername/ConBot.git)
+git clone https://github.com/guidokl/ConBot.git
 cd ConBot
 
 # For Debian/Linux
