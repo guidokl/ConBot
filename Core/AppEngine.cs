@@ -1,16 +1,24 @@
-﻿using System;
+﻿using ConBot.Configuration;
+using ConBot.Providers;
+using Microsoft.Extensions.Options;
+using Spectre.Console;
+using System;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
-using ConBot.Providers;
-using Spectre.Console;
 
 namespace ConBot.Core;
 
-public class AppEngine(IAiProvider aiProvider)
+public class AppEngine(IAiProvider aiProvider, IOptions<ThemeConfig> themeOptions)
 {
-    // Regex targets text between backticks
-    private static readonly Regex InlineCode = new(@"`([^`]+)`", RegexOptions.Compiled);
+    private readonly ThemeConfig _theme = themeOptions.Value;
+
+    // Regex Definitions
+#pragma warning disable SYSLIB1045
+    private static readonly Regex InlineCodeRegex = new(@"`([^`]+)`", RegexOptions.Compiled);
+    private static readonly Regex BoldRegex = new(@"\*\*([^*]+)\*\*", RegexOptions.Compiled);
+    private static readonly Regex ItalicRegex = new(@"(?<!\*)\*([^*]+)\*(?!\*)", RegexOptions.Compiled);
+#pragma warning restore SYSLIB1045
 
     public async Task RunAsync(string query)
     {
@@ -28,11 +36,12 @@ public class AppEngine(IAiProvider aiProvider)
 
             var panel = new Panel(new Markup(ToSpectreMarkup(response)))
                 .Border(BoxBorder.Rounded)
-                .Header("[teal] [/]c[blue]●[/]nb[LightSalmon1]●[/]t[teal] [/]", Justify.Left)
+                .Header($"[{_theme.PanelBorder}] [/]" +
+                        $"c[{_theme.BlockCode}]●[/]nb[{_theme.InlineCode}]●[/]t" +
+                        $"[{_theme.PanelBorder}] [/]", Justify.Left)
                 .Expand()
                 .Padding(1, 1, 1, 1)
-                .BorderStyle(Style.Parse("Teal"));
-
+                .BorderStyle(Style.Parse(_theme.PanelBorder));
             AnsiConsole.Write(panel);
         }
         catch (Exception ex)
@@ -41,12 +50,16 @@ public class AppEngine(IAiProvider aiProvider)
         }
     }
 
-    private static string ColorInlineCode(string escapedLine)
+    private string ApplyInlineFormatting(string escapedLine)
     {
-        return InlineCode.Replace(escapedLine, "[blue]$1[/]");
+        // Apply inline style regexes
+        var formatted = InlineCodeRegex.Replace(escapedLine, $"[{_theme.InlineCode}]$1[/]");
+        formatted = BoldRegex.Replace(formatted, $"[bold {_theme.Highlight}]$1[/]");
+        formatted = ItalicRegex.Replace(formatted, $"[italic {_theme.Highlight}]$1[/]");
+        return formatted;
     }
 
-    private static string ToSpectreMarkup(string response)
+    private string ToSpectreMarkup(string response)
     {
         var sb = new StringBuilder();
         var inCodeBlock = false;
@@ -62,11 +75,7 @@ public class AppEngine(IAiProvider aiProvider)
             if (escaped.StartsWith("```"))
             {
                 if (inCodeBlock)
-                {
-                    // We are exiting the code block. 
                     sb.AppendLine();
-                }
-
                 inCodeBlock = !inCodeBlock;
                 continue;
             }
@@ -74,15 +83,15 @@ public class AppEngine(IAiProvider aiProvider)
             if (inCodeBlock)
             {
                 // We are inside the code block. 
-                sb.AppendLine($"> [LightSalmon1]{escaped}[/]");
+                sb.AppendLine($"> [{_theme.BlockCode}]{escaped}[/]");
             }
             else if (escaped.StartsWith("### ") || escaped.StartsWith("## ") || escaped.StartsWith("# "))
             {
-                sb.AppendLine($"[bold yellow]{ColorInlineCode(escaped)}[/]");
+                sb.AppendLine($"[bold {_theme.Header}]{ApplyInlineFormatting(escaped)}[/]");
             }
             else
             {
-                sb.AppendLine(ColorInlineCode(escaped));
+                sb.AppendLine(ApplyInlineFormatting(escaped));
             }
         }
 
