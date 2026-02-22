@@ -1,4 +1,4 @@
-﻿# ConBot
+# ConBot
 
 The terminal-native AI landscape is saturated with complex, stateful "Agentic Workflows" designed for codebase mutation and multi-step reasoning.
 
@@ -8,12 +8,11 @@ The terminal-native AI landscape is saturated with complex, stateful "Agentic Wo
 
 ## Core Features
 
-* Stateless Execution: Operates as a single-shot CLI command. Returns control to the host shell immediately after rendering.
-* Dynamic AI Routing: Implements a Provider Pattern via `Microsoft.Extensions.AI`, allowing seamless switching between OpenAI, OpenRouter, or local API instances without altering core execution logic.
-* OS Context Awareness: Generates shell-appropriate syntax based on the target environment configured in settings (e.g., PowerShell for Windows, Bash for Linux).
-* Styled TUI Output: Utilizes `Spectre.Console` with a custom state-machine parser to dynamically colorize Markdown outputs. Supports dynamic UI skinning via JSON configuration.
-* Deterministic Inference: API constraints (Temperature, Max Tokens) are strictly mapped to deterministic profiles to guarantee reference-only formatting and prevent LLM hallucination.
-* Robust CLI Parsing: Leverages `Spectre.Console.Cli` for industry-standard argument validation, strict typing, and auto-generated help screens.
+* **Simple & Safe:** Single-shot CLI command. It takes no control of your system, executes no actions and instantly hands control back to the host shell.
+* **BYOK & Dynamic AI Routing:** Bring Your Own Key. Seamlessly switch between OpenAI, OpenRouter, or local API instances (like Ollama).
+* **JSON Configurability:** Fully managed via `appsettings.json` for effortless environment and provider swapping.
+* **Dynamic Theming:** Utilizes `Spectre.Console` with a custom parser to dynamically colorize Markdown outputs based on.
+* **Robust CLI Parsing:** Leverages `Spectre.Console.Cli` for argument validation, strict typing, and auto-generated help screens.
 
 ## Installation
 
@@ -34,7 +33,7 @@ Move the compiled conbot (or conbot.exe) executable to a directory within your s
 
 ## Configuration
 
-ConBot reads configuration via the Options Pattern. Create an appsettings.json file in the same directory as the compiled executable.
+ConBot operates on a Bring Your Own Key (BYOK) model. To get started, rename the provided `appsettings.example.json` to `appsettings.json`, and insert your API key and preferred configuration:
 
 ```json
 {
@@ -58,21 +57,21 @@ ConBot reads configuration via the Options Pattern. Create an appsettings.json f
 }
 ```
 
-* ApiKey: Your API token. Keep this file excluded from source control.
-* EndpointUrl: Leave empty to use the default OpenAI REST endpoint. Populate with an alternative URI (e.g., https://openrouter.ai/api/v1 or a local Ollama instance) to dynamically reroute the provider.
-* ThemeSettings: Accepts standard valid Spectre.Console color names to dynamically skin the UI without recompilation.
+* **ApiKey:** Your API token. Keep this file excluded from source control.
+* **EndpointUrl:** Leave empty to use the default OpenAI REST endpoint. Populate with an alternative URI (e.g., `https://openrouter.ai/api/v1` or a local Ollama instance) to dynamically reroute the provider.
+* **ThemeSettings:** Accepts standard valid `Spectre.Console` color names to dynamically skin the UI without recompilation.
 
 ## Usage
 
 Pass your query as a string argument directly to the executable.
-Bash
 
 ```bash
 conbot "How do I extract a .tar.gz file?"
 ```
+
 Output is strictly governed by the system prompt to return only the exact command syntax accompanied by a contextual explanation.
+
 You can dynamically override the configured verbosity setting per invocation utilizing the `-v|--verbosity` flag:
-Bash
 
 ```bash
 conbot -v long "find running containers"
@@ -83,6 +82,7 @@ Use `conbot --help` to view the auto-generated CLI parameter list and execution 
 ## Architecture
 
 ConBot is built on C# and .NET 10. It enforces strict Dependency Inversion, isolating the UI presentation layer (`AppEngine`) from the HTTP REST logic (`IAiProvider`).
+
 - `Spectre.Console.Cli`: Handles strict input validation, `Enum` enforcement, and command routing.
 - `Microsoft.Extensions.DependencyInjection`: Bootstraps the Composition Root, bridged to Spectre's internal router via a custom `TypeRegistrar` adapter.
 - `AppEngine`: Custom state-machine parser intercepting raw LLM output to parse Markdown blocks and flawlessly render structured UI output via `Spectre.Console`.
