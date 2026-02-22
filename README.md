@@ -24,7 +24,7 @@ Clone the repository and compile using the .NET CLI. ConBot is deployed as a sin
 git clone https://github.com/guidokl/ConBot.git
 cd ConBot
 
-# For Debian/Linux
+# For Linux
 dotnet publish -c Release -r linux-x64 --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
 
 # For Windows 11
