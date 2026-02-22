@@ -6,7 +6,7 @@ The terminal AI landscape is saturated with complex, stateful agents designed fo
 
 <img src="assets/conbotCover.png" alt="conbot cli" width="100%" />
 
-<a href="assets/conbotThemes.png">View Theme Overview</a>
+[View Theme Overview (Full Size)](https://raw.githubusercontent.com/guidokl/ConBot/refs/heads/main/assets/conbotThemes.png)
 
 ## Core Features
 
@@ -79,7 +79,7 @@ Use `conbot --help` to view the auto-generated CLI parameter list and execution 
 
 ## Themes
 
-<a href="assets/conbotThemes.png">View Theme Overview (Full Size)</a>
+[View Theme Overview (Full Size)](https://raw.githubusercontent.com/guidokl/ConBot/refs/heads/main/assets/conbotThemes.png)
 <img src="assets/conbotThemes.png" alt="Conbot CLI Themes" width="100%" />
  
 * **Selection:** 25 built-in themes with a modular architecture for adding custom skins.
