@@ -66,7 +66,7 @@ ConBot operates on a Bring Your Own Key (BYOK) model. To get started, rename the
 Pass your query as a string argument directly to the executable.
 
 ```bash
-conbot "How do I extract a .tar.gz file?"
+conbot How do I extract a .tar.gz file?
 ```
 
 Output is strictly governed by the system prompt to return only the exact command syntax accompanied by a contextual explanation.
