@@ -14,6 +14,41 @@
       "Highlight": "hotpink",
       "Header": "yellow"
     },
+    "Matrix": {
+      "PanelBorder": "green",
+      "BlockCode": "lime",
+      "InlineCode": "darkolivegreen3",
+      "Highlight": "greenyellow",
+      "Header": "springgreen1"
+    },
+    "DeepOcean": {
+      "PanelBorder": "blue",
+      "BlockCode": "deepskyblue1",
+      "InlineCode": "dodgerblue1",
+      "Highlight": "aquamarine1",
+      "Header": "cyan1"
+    },
+    "Dracula": {
+      "PanelBorder": "purple",
+      "BlockCode": "mediumpurple1",
+      "InlineCode": "indianred1",
+      "Highlight": "deeppink1",
+      "Header": "orchid1"
+    },
+    "Solarized": {
+      "PanelBorder": "darkorange",
+      "BlockCode": "navajowhite1",
+      "InlineCode": "orange1",
+      "Highlight": "gold1",
+      "Header": "orangered1"
+    },
+    "MSDOS": {
+      "PanelBorder": "silver",
+      "BlockCode": "white",
+      "InlineCode": "yellow",
+      "Highlight": "aqua",
+      "Header": "white"
+    },
     "Nord": {
       "PanelBorder": "cadetblue",
       "BlockCode": "lightcyan3",
@@ -21,12 +56,124 @@
       "Highlight": "paleturquoise1",
       "Header": "skyblue1"
     },
-    "Matrix": {
-      "PanelBorder": "green",
-      "BlockCode": "lime",
-      "InlineCode": "darkolivegreen3",
-      "Highlight": "greenyellow",
-      "Header": "springgreen1"
+    "LightMode": {
+      "PanelBorder": "black",
+      "BlockCode": "darkblue",
+      "InlineCode": "darkred",
+      "Highlight": "darkorange",
+      "Header": "darkgreen"
+    },
+    "Monokai": {
+      "PanelBorder": "grey46",
+      "BlockCode": "yellow",
+      "InlineCode": "hotpink",
+      "Highlight": "turquoise2",
+      "Header": "greenyellow"
+    },
+    "Coffee": {
+      "PanelBorder": "saddlebrown",
+      "BlockCode": "wheat1",
+      "InlineCode": "indianred1",
+      "Highlight": "darkorange",
+      "Header": "maroon"
+    },
+    "CrimsonParchment": {
+      "PanelBorder": "darkred",
+      "BlockCode": "cornsilk1",
+      "InlineCode": "brown",
+      "Highlight": "red3",
+      "Header": "firebrick1"
+    },
+    "LavenderMist": {
+      "PanelBorder": "thistle1",
+      "BlockCode": "plum1",
+      "InlineCode": "lightsteelblue1",
+      "Highlight": "pink1",
+      "Header": "orchid1"
+    },
+    "MintyBreeze": {
+      "PanelBorder": "palegreen1",
+      "BlockCode": "darkseagreen1",
+      "InlineCode": "mediumaquamarine",
+      "Highlight": "aquamarine1",
+      "Header": "springgreen2"
+    },
+    "DustyRose": {
+      "PanelBorder": "rosybrown",
+      "BlockCode": "mistyrose1",
+      "InlineCode": "lightpink1",
+      "Highlight": "palevioletred1",
+      "Header": "peachpuff1"
+    },
+    "SynthwaveExtreme": {
+      "PanelBorder": "magenta1",
+      "BlockCode": "cyan1",
+      "InlineCode": "yellow1",
+      "Highlight": "springgreen1",
+      "Header": "deepskyblue1"
+    },
+    "ArcadeNeon": {
+      "PanelBorder": "blueviolet",
+      "BlockCode": "chartreuse1",
+      "InlineCode": "orangered1",
+      "Highlight": "fuchsia",
+      "Header": "gold1"
+    },
+    "ToxicAlert": {
+      "PanelBorder": "red1",
+      "BlockCode": "greenyellow",
+      "InlineCode": "yellow",
+      "Highlight": "cyan1",
+      "Header": "magenta1"
+    },
+    "Hacker": {
+      "PanelBorder": "darkgreen",
+      "BlockCode": "green",
+      "InlineCode": "springgreen3",
+      "Highlight": "springgreen1",
+      "Header": "springgreen2"
+    },
+    "Midnight": {
+      "PanelBorder": "midnightblue",
+      "BlockCode": "royalblue1",
+      "InlineCode": "dodgerblue1",
+      "Highlight": "deepskyblue1",
+      "Header": "lightskyblue1"
+    },
+    "Autumn": {
+      "PanelBorder": "sienna",
+      "BlockCode": "orange1",
+      "InlineCode": "darkgoldenrod",
+      "Highlight": "gold1",
+      "Header": "orangered1"
+    },
+    "Royal": {
+      "PanelBorder": "indigo",
+      "BlockCode": "mediumpurple1",
+      "InlineCode": "darkorchid1",
+      "Highlight": "violet",
+      "Header": "plum1"
+    },
+    "Monochrome": {
+      "PanelBorder": "grey50",
+      "BlockCode": "grey85",
+      "InlineCode": "grey70",
+      "Highlight": "white",
+      "Header": "grey93"
+    },
+    "Forest": {
+      "PanelBorder": "darkolivegreen",
+      "BlockCode": "olivedrab1",
+      "InlineCode": "darkseagreen1",
+      "Highlight": "chartreuse2",
+      "Header": "greenyellow"
+    },
+    "CottonCandy": {
+      "PanelBorder": "lightpink1",
+      "BlockCode": "lightskyblue1",
+      "InlineCode": "plum1",
+      "Highlight": "hotpink",
+      "Header": "cyan1"
     }
   }
 }

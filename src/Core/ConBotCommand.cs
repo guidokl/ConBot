@@ -14,18 +14,23 @@ public enum VerbosityLevel
     Long
 }
 
-// DTO for CLI arguments
+// DTO
 public sealed class ConBotSettings : CommandSettings
 {
-    // Change type to string[]
+    // Reverted back to a single string
     [CommandArgument(0, "<query>")]
     [Description("The command query to resolve.")]
-    public string[] Query { get; set; } = [];
+    public string Query { get; set; } = string.Empty;
 
     [CommandOption("-v|--verbosity")]
     [Description("Overrides the verbosity setting defined in appsettings.json.")]
     [DefaultValue(null)]
     public VerbosityLevel? Verbosity { get; set; }
+
+    [CommandOption("-t|--theme")]
+    [Description("Overrides the UI theme defined in appsettings.json.")]
+    [DefaultValue(null)]
+    public string? Theme { get; set; }
 }
 
 // Route
@@ -40,9 +45,7 @@ public sealed class ConBotCommand(AppEngine engine, IOptions<PromptConfig> promp
             promptOptions.Value.Verbosity = settings.Verbosity.Value.ToString().ToLowerInvariant();
         }
 
-        string fullQuery = string.Join(" ", settings.Query);
-
-        await engine.RunAsync(fullQuery);
+        await engine.RunAsync(settings.Query);
         return 0;
     }
 }

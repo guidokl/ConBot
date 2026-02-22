@@ -1,35 +1,37 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-	<AssemblyName>conbot</AssemblyName>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<AssemblyName>conbot</AssemblyName>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.AI" Version="10.3.0" />
-    <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.3.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.3" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.3" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="10.0.3" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.3" />
-    <PackageReference Include="NTokenizers.Extensions.Spectre.Console" Version="2.2.0" />
-    <PackageReference Include="Spectre.Console" Version="0.54.0" />
-    <PackageReference Include="Spectre.Console.Cli" Version="0.53.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.AI" Version="10.3.0" />
+		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.3.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.3" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.3" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="10.0.3" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.3" />
+		<PackageReference Include="NTokenizers.Extensions.Spectre.Console" Version="2.2.0" />
+		<PackageReference Include="Spectre.Console" Version="0.54.0" />
+		<PackageReference Include="Spectre.Console.Cli" Version="0.53.1" />
+	</ItemGroup>
 
-  <ItemGroup>
-	<None Update="appthemes.json">
-		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</None>
-    <None Update="appsettings.example.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="appsettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Update="appsettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+
+		<None Update="appthemes.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+
+		<None Update="appsettings.example.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
 </Project>
