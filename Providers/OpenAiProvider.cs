@@ -12,7 +12,7 @@ public class OpenAiProvider : IAiProvider
     private readonly IChatClient _chatClient;
     private readonly PromptConfig _promptConfig;
 
-    // Constructor parameters suffixed with 'Options'
+    // Constructor parameters suffixed with Options
     public OpenAiProvider(IOptions<BotConfig> botOptions, IOptions<PromptConfig> promptOptions)
     {
         // Local and class-level fields retain the full descriptive names
@@ -34,11 +34,24 @@ public class OpenAiProvider : IAiProvider
 
     public async Task<string> GetCommandAsync(string prompt, CancellationToken cancellationToken = default)
     {
+        var (maxTokens, temperature) = _promptConfig.Verbosity.ToLowerInvariant() switch
+        {
+            "long" => (1500, 0.4f),
+            "medium" => (500, 0.2f),
+            "short" or _ => (150, 0.1f)
+        };
+
         IList<ChatMessage> messages =
         [
             new ChatMessage(ChatRole.System, SystemPrompts.GetSystemBehavior(_promptConfig.OsContext, _promptConfig.Verbosity)),
             new ChatMessage(ChatRole.User, prompt)
         ];
+
+        var chatOptions = new ChatOptions
+        {
+            Temperature = temperature,
+            MaxOutputTokens = maxTokens
+        };
 
         var response = await _chatClient.GetResponseAsync(messages, cancellationToken: cancellationToken);
 

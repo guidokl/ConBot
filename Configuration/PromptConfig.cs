@@ -8,7 +8,7 @@ namespace ConBot.Configuration
     {
         public const string SectionName = "PromptSettings";
 
-        public string OsContext { get; set; } = "Generic Linux/Windows";
+        public string OsContext { get; set; } = "generic Linux/Windows";
         public string Verbosity { get; set; } = "short";
     }
 }
