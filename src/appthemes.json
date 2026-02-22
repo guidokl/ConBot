@@ -71,7 +71,7 @@
       "Header": "greenyellow"
     },
     "Coffee": {
-      "PanelBorder": "saddlebrown",
+      "PanelBorder": "darkorange3",
       "BlockCode": "wheat1",
       "InlineCode": "indianred1",
       "Highlight": "darkorange",
@@ -80,7 +80,7 @@
     "CrimsonParchment": {
       "PanelBorder": "darkred",
       "BlockCode": "cornsilk1",
-      "InlineCode": "brown",
+      "InlineCode": "darkorange3",
       "Highlight": "red3",
       "Header": "firebrick1"
     },
@@ -94,7 +94,7 @@
     "MintyBreeze": {
       "PanelBorder": "palegreen1",
       "BlockCode": "darkseagreen1",
-      "InlineCode": "mediumaquamarine",
+      "InlineCode": "mediumspringgreen",
       "Highlight": "aquamarine1",
       "Header": "springgreen2"
     },
@@ -134,23 +134,23 @@
       "Header": "springgreen2"
     },
     "Midnight": {
-      "PanelBorder": "midnightblue",
+      "PanelBorder": "blue3",
       "BlockCode": "royalblue1",
       "InlineCode": "dodgerblue1",
       "Highlight": "deepskyblue1",
       "Header": "lightskyblue1"
     },
     "Autumn": {
-      "PanelBorder": "sienna",
+      "PanelBorder": "darkorange3",
       "BlockCode": "orange1",
       "InlineCode": "darkgoldenrod",
       "Highlight": "gold1",
       "Header": "orangered1"
     },
     "Royal": {
-      "PanelBorder": "indigo",
+      "PanelBorder": "blueviolet",
       "BlockCode": "mediumpurple1",
-      "InlineCode": "darkorchid1",
+      "InlineCode": "purple3",
       "Highlight": "violet",
       "Header": "plum1"
     },
@@ -162,8 +162,8 @@
       "Header": "grey93"
     },
     "Forest": {
-      "PanelBorder": "darkolivegreen",
-      "BlockCode": "olivedrab1",
+      "PanelBorder": "darkolivegreen3",
+      "BlockCode": "green3",
       "InlineCode": "darkseagreen1",
       "Highlight": "chartreuse2",
       "Header": "greenyellow"
