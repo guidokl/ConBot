@@ -1,0 +1,32 @@
+{
+  "Themes": {
+    "Default": {
+      "PanelBorder": "teal",
+      "BlockCode": "lightsalmon1",
+      "InlineCode": "blue",
+      "Highlight": "yellow",
+      "Header": "yellow"
+    },
+    "Cyberpunk": {
+      "PanelBorder": "fuchsia",
+      "BlockCode": "cyan1",
+      "InlineCode": "springgreen2",
+      "Highlight": "hotpink",
+      "Header": "yellow"
+    },
+    "Nord": {
+      "PanelBorder": "cadetblue",
+      "BlockCode": "lightcyan3",
+      "InlineCode": "lightsteelblue",
+      "Highlight": "paleturquoise1",
+      "Header": "skyblue1"
+    },
+    "Matrix": {
+      "PanelBorder": "green",
+      "BlockCode": "lime",
+      "InlineCode": "darkolivegreen3",
+      "Highlight": "greenyellow",
+      "Header": "springgreen1"
+    }
+  }
+}

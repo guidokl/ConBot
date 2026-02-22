@@ -12,13 +12,27 @@ var exePath = AppContext.BaseDirectory;
 
 var configuration = new ConfigurationBuilder()
     .SetBasePath(exePath)
+    .AddJsonFile("appthemes.json", optional: false, reloadOnChange: true)
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .Build();
 
 var services = new ServiceCollection();
 services.Configure<BotConfig>(configuration.GetSection(BotConfig.SectionName));
 services.Configure<PromptConfig>(configuration.GetSection(PromptConfig.SectionName));
-services.Configure<ThemeConfig>(configuration.GetSection(ThemeConfig.SectionName));
+
+// Extract the active theme name from AppSettings:ActiveTheme, defaulting to "Default"
+string activeThemeName = configuration.GetValue<string>("AppSettings:ActiveTheme") ?? "Default";
+var themeSection = configuration.GetSection($"Themes:{activeThemeName}");
+
+// Fallback safety check in case of a typo in appsettings.json
+if (!themeSection.Exists())
+{
+    themeSection = configuration.GetSection("Themes:Default");
+    Console.WriteLine($"[Warning] Theme '{activeThemeName}' not found in appthemes.json. Falling back to Default.");
+}
+
+// Bind the dynamically resolved JSON node to the ThemeConfig POCO
+services.Configure<ThemeConfig>(themeSection);
 
 services.AddTransient<IAiProvider, OpenAiProvider>();
 services.AddTransient<AppEngine>();
