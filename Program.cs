@@ -3,21 +3,11 @@ using ConBot.Core;
 using ConBot.Providers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Spectre.Console.Cli;
+using System;
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-// 1. Argument Parsing
-if (args.Length == 0)
-{
-    Console.WriteLine("Usage: conbot \"<your command query>\"");
-    return;
-}
-
-// Join handles both quoted (conbot "list files") and unquoted (conbot list files) inputs
-string query = string.Join(" ", args);
-
-// 2. Configuration Binding
-// Resolve the absolute path of the executing binary to locate appsettings.json
 var exePath = AppContext.BaseDirectory;
 
 var configuration = new ConfigurationBuilder()
@@ -25,7 +15,6 @@ var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .Build();
 
-// 3. Dependency Injection Setup
 var services = new ServiceCollection();
 services.Configure<BotConfig>(configuration.GetSection(BotConfig.SectionName));
 services.Configure<PromptConfig>(configuration.GetSection(PromptConfig.SectionName));
@@ -34,8 +23,16 @@ services.Configure<ThemeConfig>(configuration.GetSection(ThemeConfig.SectionName
 services.AddTransient<IAiProvider, OpenAiProvider>();
 services.AddTransient<AppEngine>();
 
-var serviceProvider = services.BuildServiceProvider();
+// Establish Spectre.Console.Cli routing mapping to Microsoft DI
+var registrar = new TypeRegistrar(services);
+var app = new CommandApp<ConBotCommand>(registrar);
 
-// 4. Execution
-var engine = serviceProvider.GetRequiredService<AppEngine>();
-await engine.RunAsync(query);
+// Build automated --help screen and validation rules
+app.Configure(config =>
+{
+    config.SetApplicationName("conbot");
+    config.AddExample(["\"extract tar gz\""]);
+    config.AddExample(["\"find running containers\"", "-v", "medium"]);
+});
+
+return await app.RunAsync(args);
