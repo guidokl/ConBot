@@ -1,10 +1,12 @@
 # ConBot
 
-The terminal-native AI landscape is saturated with complex, stateful "Agentic Workflows" designed for codebase mutation and multi-step reasoning.
+The terminal AI landscape is saturated with complex, stateful agents designed for codebase mutation and multi-step reasoning.
 
-**ConBot is positioned as an anti-agent.** It fills the gap for a low-latency, "search-and-done" reference utility.
+**ConBot is positioned as an anti-agent.** It fills the gap for a low-friction, "search-and-done" reference utility.
 
-<img src="assets/screenshot01.png" alt="conbot cli" width="100%" />
+<img src="assets/conbotCover.png" alt="conbot cli" width="100%" />
+
+<a href="assets/conbotThemes.png">View Theme Overview</a>
 
 ## Core Features
 
@@ -37,29 +39,25 @@ ConBot operates on a Bring Your Own Key (BYOK) model. To get started, rename the
 
 ```json
 {
-  "BotSettings": {
+  "AiSettings": {
     "Provider": "OpenAI",
     "ApiKey": "YOUR_API_KEY_HERE",
-    "ModelId": "gpt-4o-mini",
+    "ModelId": "gpt-5-mini",
     "EndpointUrl": ""
   },
   "PromptSettings": {
-    "OsContext": "Windows 11 PowerShell",
+    "OsContext": "generic Linux/Windows",
     "Verbosity": "short"
   },
-  "ThemeSettings": {
-    "PanelBorder": "teal",
-    "BlockCode": "lightsalmon1",
-    "InlineCode": "blue",
-    "Highlight": "yellow",
-    "Header": "yellow"
+  "AppSettings": {
+    "ActiveTheme": "Monokai"
   }
 }
 ```
 
 * **ApiKey:** Your API token. Keep this file excluded from source control.
 * **EndpointUrl:** Leave empty to use the default OpenAI REST endpoint. Populate with an alternative URI (e.g., `https://openrouter.ai/api/v1` or a local Ollama instance) to dynamically reroute the provider.
-* **ThemeSettings:** Accepts standard valid `Spectre.Console` color names to dynamically skin the UI without recompilation.
+* **ActiveTheme:** Choose one of 25 themes (see below).
 
 ## Usage
 
@@ -78,6 +76,15 @@ conbot -v long "find running containers"
 ```
 
 Use `conbot --help` to view the auto-generated CLI parameter list and execution options.
+
+## Themes
+
+<a href="assets/conbotThemes.png">View Theme Overview (Full Size)</a>
+<img src="assets/conbotThemes.png" alt="Conbot CLI Themes" width="100%" />
+ 
+* **Selection:** 25 built-in themes with a modular architecture for adding custom skins.
+* **Customization:** Easily switch between high-contrast and minimalist styles to suit your terminal environment.
+* **appthemes.json:** Accepts standard valid `Spectre.Console` color names to dynamically skin the UI without recompilation.
 
 ## Architecture
 
