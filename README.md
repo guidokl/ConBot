@@ -2,7 +2,7 @@
 
 The terminal AI landscape is saturated with complex, stateful agents designed for codebase mutation and multi-step reasoning.
 
-**ConBot is positioned as an anti-agent.** It fills the gap for a low-friction, "search-and-done" reference utility.
+**ConBot is positioned as an anti-agent.** It fills the gap for a low-friction, "search-and-done" reference utility. Configure your API key, select an LLM model, and begin querying directly from your command line.
 
 <img src="assets/conbotCover.png" alt="conbot cli" width="100%" />
 
