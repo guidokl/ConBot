@@ -4,6 +4,8 @@ The terminal-native AI landscape is saturated with complex, stateful "Agentic Wo
 
 **ConBot is positioned as an anti-agent.** It fills the gap for a low-latency, "search-and-done" reference utility.
 
+<img src="assets/screenshot01.png" alt="conbot cli" width="100%" />
+
 ## Core Features
 
 * Stateless Execution: Operates as a single-shot CLI command. Returns control to the host shell immediately after rendering.
